@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="jtl0813.github.io/"/>
-  <updated>2017-02-09T09:27:02.851Z</updated>
+  <updated>2017-02-09T09:31:58.824Z</updated>
   <id>jtl0813.github.io/</id>
   
   <author>
@@ -20,10 +20,32 @@
     <link href="jtl0813.github.io/2017/02/09/%E3%80%90Hexo-Github%E7%B3%BB%E5%88%97%E3%80%91%E5%9C%A8Github%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%AE%8CHexo%E9%9C%80%E8%A6%81%E4%BC%98%E5%8C%96%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BA%8B%E6%83%85/"/>
     <id>jtl0813.github.io/2017/02/09/【Hexo-Github系列】在Github上搭建完Hexo需要优化的一些事情/</id>
     <published>2017-02-09T09:01:45.000Z</published>
-    <updated>2017-02-09T09:27:02.851Z</updated>
+    <updated>2017-02-09T09:31:58.824Z</updated>
     
     <content type="html"><![CDATA[<p>在Github上部署完了Hexo 还有很多事情要做  修改title 修改一些基础信息 发表文章 等等 你看不顺眼的<br>没有更改theme 我觉得原生的挺好用的   Landscape 另外我也想熟悉过后在体验别的 由简入繁</p>
-<p>1 修改博客名称 作者等 在_config.yml中直接修改<br>2 安装RSS与SITEMAP 安装完Hexo之后发现受也有RSS(但是404)并且没有SITEMAP 安装之<br>    npm install hexo-generator-feed –save  //rss<br>    npm install hexo-generator-sitemap –save  //sitemap<br>  安装完之后修改配置   themes\landscape\menu_config.yml:里添加网站地图:/sitemap.xml<br>3 版权信息修改 页尾的有hexo连接  看着hexo连接  总感觉站点不是自己的  改之<br>    layout_partial\footer.ejs    倒数第四行   修改了<br>4 添加评论框  增加点实用功能 与网友互动  目前有两个评论系统靠谱 discus(访问很慢 pass掉) 多说 直接用多说<br>    4.1 layout_partial\article.ejs中将中部 dis 评论按钮代码替换为：<br>    &lt;% if (post.comments){ %&gt;<br>        <a href="<%- post.permalink %>#ds-thread" class="ds-thread-count article-comment-link" data-thread-key="<%- post.path%>">评论</a><br>    &lt;% } %&gt;<br>    4.2 layout_partial\article.ejs中底部 dis 评论框替换为：<br>    &lt;% if (!index &amp;&amp; post.comments){ %&gt;<br>    <section id="comments"><br>        <div id="ds-thread" class="ds-thread" data-thread-key="<%= post.path%>" data-title="<%= post.title %>" data-url="<%= post.permalink %>"></div><br>    </section><br>    &lt;% } %&gt;<br>    4.3 layout_partial\after-footer.ejs中 discus 评论框替换为从多说获得的js代码：<br>    <!-- 多说评论框 end --><br>    <!-- 多说公共JS代码 start (一个网页只需插入一次) --><br>    <script type="text/javascript"><br>        var duoshuoQuery = {short_name:”username”};<br>        (function() {<br>            var ds = document.createElement(‘script’);<br>            ds.type = ‘text/javascript’;ds.async = true;<br>            ds.src = (document.location.protocol == ‘https:’ ? ‘https:’ : ‘http:’) + ‘//static.duoshuo.com/embed.js’;<br>            ds.charset = ‘UTF-8’;<br>            (document.getElementsByTagName(‘head’)[0]<br>            || document.getElementsByTagName(‘body’)[0]).appendChild(ds);<br>        })();<br>    </script><br>    <!-- 多说公共JS代码 end --></p>
+<p>1 修改博客名称 作者等 在_config.yml中直接修改<br>2 安装RSS与SITEMAP 安装完Hexo之后发现受也有RSS(但是404)并且没有SITEMAP 安装之<br>    npm install hexo-generator-feed –save  //rss<br>    npm install hexo-generator-sitemap –save  //sitemap<br>  安装完之后修改配置   themes\landscape\menu_config.yml:里添加网站地图:/sitemap.xml<br>3 版权信息修改 页尾的有hexo连接  看着hexo连接  总感觉站点不是自己的  改之<br>    layout_partial\footer.ejs    倒数第四行   修改了<br>4 添加评论框  增加点实用功能 与网友互动  目前有两个评论系统靠谱 discus(访问很慢 pass掉) 多说 直接用多说<br>    4.1 layout_partial\article.ejs中将中部 dis 评论按钮代码替换为：<br>    <!--
+    <% if (post.comments){ %>
+        <a href="<%- post.permalink %>#ds-thread" class="ds-thread-count article-comment-link" data-thread-key="<%- post.path%>">评论</a>
+    <% } %>  
+    --><br>    4.2 layout_partial\article.ejs中底部 dis 评论框替换为：<br>    <!--
+    <% if (!index && post.comments){ %>
+    <section id="comments">
+        <div id="ds-thread" class="ds-thread" data-thread-key="<%= post.path%>" data-title="<%= post.title %>" data-url="<%= post.permalink %>"></div>
+    </section>
+    <% } %>
+    --><br>    4.3 layout_partial\after-footer.ejs中 discus 评论框替换为从多说获得的js代码：<br>    <!-- 多说评论框 end --><br>    <!-- 多说公共JS代码 start (一个网页只需插入一次) --><br>    <!--
+    <script type="text/javascript">
+        var duoshuoQuery = {short_name:"username"};
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0] 
+            || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+    --><br>    <!-- 多说公共JS代码 end --></p>
 <p>好了   享受写博客的乐趣吧   还有很多等待发掘</p>
 ]]></content>
     
