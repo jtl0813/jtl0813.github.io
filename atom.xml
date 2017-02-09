@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Always&#39;s Blog</title>
+  <subtitle>听一声剑鸣，道一声莫忘！</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="jtl0813.github.io/"/>
+  <updated>2017-02-09T09:27:02.851Z</updated>
+  <id>jtl0813.github.io/</id>
+  
+  <author>
+    <name>Always</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【Hexo-Github系列】在Github上搭建完Hexo需要优化的一些事情</title>
+    <link href="jtl0813.github.io/2017/02/09/%E3%80%90Hexo-Github%E7%B3%BB%E5%88%97%E3%80%91%E5%9C%A8Github%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%AE%8CHexo%E9%9C%80%E8%A6%81%E4%BC%98%E5%8C%96%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BA%8B%E6%83%85/"/>
+    <id>jtl0813.github.io/2017/02/09/【Hexo-Github系列】在Github上搭建完Hexo需要优化的一些事情/</id>
+    <published>2017-02-09T09:01:45.000Z</published>
+    <updated>2017-02-09T09:27:02.851Z</updated>
+    
+    <content type="html"><![CDATA[<p>在Github上部署完了Hexo 还有很多事情要做  修改title 修改一些基础信息 发表文章 等等 你看不顺眼的<br>没有更改theme 我觉得原生的挺好用的   Landscape 另外我也想熟悉过后在体验别的 由简入繁</p>
+<p>1 修改博客名称 作者等 在_config.yml中直接修改<br>2 安装RSS与SITEMAP 安装完Hexo之后发现受也有RSS(但是404)并且没有SITEMAP 安装之<br>    npm install hexo-generator-feed –save  //rss<br>    npm install hexo-generator-sitemap –save  //sitemap<br>  安装完之后修改配置   themes\landscape\menu_config.yml:里添加网站地图:/sitemap.xml<br>3 版权信息修改 页尾的有hexo连接  看着hexo连接  总感觉站点不是自己的  改之<br>    layout_partial\footer.ejs    倒数第四行   修改了<br>4 添加评论框  增加点实用功能 与网友互动  目前有两个评论系统靠谱 discus(访问很慢 pass掉) 多说 直接用多说<br>    4.1 layout_partial\article.ejs中将中部 dis 评论按钮代码替换为：<br>    &lt;% if (post.comments){ %&gt;<br>        <a href="<%- post.permalink %>#ds-thread" class="ds-thread-count article-comment-link" data-thread-key="<%- post.path%>">评论</a><br>    &lt;% } %&gt;<br>    4.2 layout_partial\article.ejs中底部 dis 评论框替换为：<br>    &lt;% if (!index &amp;&amp; post.comments){ %&gt;<br>    <section id="comments"><br>        <div id="ds-thread" class="ds-thread" data-thread-key="<%= post.path%>" data-title="<%= post.title %>" data-url="<%= post.permalink %>"></div><br>    </section><br>    &lt;% } %&gt;<br>    4.3 layout_partial\after-footer.ejs中 discus 评论框替换为从多说获得的js代码：<br>    <!-- 多说评论框 end --><br>    <!-- 多说公共JS代码 start (一个网页只需插入一次) --><br>    <script type="text/javascript"><br>        var duoshuoQuery = {short_name:”username”};<br>        (function() {<br>            var ds = document.createElement(‘script’);<br>            ds.type = ‘text/javascript’;ds.async = true;<br>            ds.src = (document.location.protocol == ‘https:’ ? ‘https:’ : ‘http:’) + ‘//static.duoshuo.com/embed.js’;<br>            ds.charset = ‘UTF-8’;<br>            (document.getElementsByTagName(‘head’)[0]<br>            || document.getElementsByTagName(‘body’)[0]).appendChild(ds);<br>        })();<br>    </script><br>    <!-- 多说公共JS代码 end --></p>
+<p>好了   享受写博客的乐趣吧   还有很多等待发掘</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在Github上部署完了Hexo 还有很多事情要做  修改title 修改一些基础信息 发表文章 等等 你看不顺眼的&lt;br&gt;没有更改theme 我觉得原生的挺好用的   Landscape 另外我也想熟悉过后在体验别的 由简入繁&lt;/p&gt;
+&lt;p&gt;1 修改博客名称 作者等 在_
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>【Hexo+Github系列】本地安装Hexo并发布在Github上</title>
+    <link href="jtl0813.github.io/2017/02/09/%E3%80%90Hexo-Github%E7%B3%BB%E5%88%97%E3%80%91%E6%9C%AC%E5%9C%B0%E5%AE%89%E8%A3%85Hexo%E5%B9%B6%E5%8F%91%E5%B8%83%E5%9C%A8Github%E4%B8%8A/"/>
+    <id>jtl0813.github.io/2017/02/09/【Hexo-Github系列】本地安装Hexo并发布在Github上/</id>
+    <published>2017-02-09T07:27:52.000Z</published>
+    <updated>2017-02-09T08:35:04.828Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近开始鼓捣博客了，几年前就开始玩，没坚持下来，工作几年之后，才发现写博客真的很有必要，不仅仅是记录自己的人生轨迹，更多的是一种坚持，多年之后 蓦然回首 我想自己会很幸福</p>
+<p>好了 不废话了，在github已经发布完了 参考了很多博客，每个人的情况都不一样，记录下来过程和经验还有坑！！！ 留待有缘人 哈哈</p>
+<p>操作系统:Win 10 64位  这个就不废话了<br>基础软件:1. Node.JS(干什么用的？一种编程语言 Hexo基于它编写的)  官网：<a href="https://nodejs.org/en/" target="_blank" rel="external">https://nodejs.org/en/</a>    我直接下载的v6.9.5稳定版(当然是64位的)  </p>
+<pre><code>2. Git (git是代码管理系统 可以装在windows上 也可以装在linux上  同步博客或者代码到github会用到)  Windows版本地址(mysysgit)：https://git-for-windows.github.io/  下载最新版直接安装  别的版本试了没效果  故采用最新版本  
+</code></pre><p>准备工作做好了  大体说下思路   1.先安装Node.JS 2.然后安装mysysgit 3.然后安装Hexo 本地调试好了之后 4.同步到Github上 OK！</p>
+<p>前两步不说了  没什么需要注意的  直接第三步 安装Hexo<br>随便找个空目录  右键git-bash here<br>进入bash命令行：npm install -g hexo-cli<br>                hexo init<br>                npm install<br>                npm install hexo-deployer-git –save     //截至到此  安装完了hexo 就在你的这个目录<br>                hexo server  //执行此命令后 可以在本地预览自己的博客  <a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a></p>
+<p>以上就完成Hexo在Windows 10瞎的安装   并可以打开浏览器查看预览</p>
+<p>说重点   如何传送到Github上<br>传送到Github之前 得先修改下Hexo的配置文件(_config.yml)的部署方式<br>deploy:<br>  type: git<br>  repository: <a href="https://github.com/username/username.github.io.git" target="_blank" rel="external">https://github.com/username/username.github.io.git</a><br>  branch: master<br>博客名称啊 子标题啊 等等  想改就改  改完保存</p>
+<p>第一步：你得先注册Github  <a href="https://github.com/" target="_blank" rel="external">https://github.com/</a>   不多说了 没坑点   注册完了 创建个仓库  注意：Repository name  填写规则  username.github.io<br>第二步：还是之前新创建的hexo目录  右键git-bash here<br>进入bash命令行：hexo clean //清理目录<br>                hexo g //生成静态文件<br>                hexo d //部署到github上</p>
+<p>访问你的博客吧: <a href="http://username.github.io" target="_blank" rel="external">http://username.github.io</a></p>
+<p>坑点：如何部署到Github上     坑了半天   浏览了很多博客   相同现象  不同的解决办法<br>      github ssh T git@github.com //看看跟github通不通<br>      hexo d  这步死活不成功  报错是无法创建tty  然后无法获取username   说的很对啊   当时就没反应过来   各种改   改部署协议从https到http到git到ssh   各种试  最后还是换成了https  因为跟协议无关   无法创建tty啊   所以就无法获取用户名和密码了   难道跟终端有关？于是痛下决心  卸载了旧版本的mysysgit  下载了最新版本的sysgit  一路亨通无阻  顺利的弹出了用户名和密码输入框   输入 部署成功！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近开始鼓捣博客了，几年前就开始玩，没坚持下来，工作几年之后，才发现写博客真的很有必要，不仅仅是记录自己的人生轨迹，更多的是一种坚持，多年之后 蓦然回首 我想自己会很幸福&lt;/p&gt;
+&lt;p&gt;好了 不废话了，在github已经发布完了 参考了很多博客，每个人的情况都不一样，记录下
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>整装待发</title>
+    <link href="jtl0813.github.io/2017/02/09/%E6%95%B4%E8%A3%85%E5%BE%85%E5%8F%91/"/>
+    <id>jtl0813.github.io/2017/02/09/整装待发/</id>
+    <published>2017-02-09T05:52:09.000Z</published>
+    <updated>2017-02-09T05:52:47.910Z</updated>
+    
+    <content type="html"><![CDATA[<p>工作也有好几年了，前两年加班时间比较多，也没有太多时间记录自己的所学所见，作为一个正正经经的IT人，有着太多的东西需要去记录，不仅仅是为了记录而记录，更多的是让自己的成长轨迹清晰可见</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;工作也有好几年了，前两年加班时间比较多，也没有太多时间记录自己的所学所见，作为一个正正经经的IT人，有着太多的东西需要去记录，不仅仅是为了记录而记录，更多的是让自己的成长轨迹清晰可见&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
