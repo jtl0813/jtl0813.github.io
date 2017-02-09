@@ -95,32 +95,28 @@
         <p>在Github上部署完了Hexo 还有很多事情要做  修改title 修改一些基础信息 发表文章 等等 你看不顺眼的<br>没有更改theme 我觉得原生的挺好用的   Landscape 另外我也想熟悉过后在体验别的 由简入繁</p>
 <ol>
 <li>修改博客名称 作者等 在_config.yml中直接修改</li>
-<li>安装RSS与SITEMAP 安装完Hexo之后发现受也有RSS(但是404)并且没有SITEMAP 安装之<br> npm install hexo-generator-feed –save  //rss<br> npm install hexo-generator-sitemap –save  //sitemap<br>安装完之后修改配置   themes\landscape\menu_config.yml:里添加网站地图:/sitemap.xml</li>
-<li>版权信息修改 页尾的有hexo连接  看着hexo连接  总感觉站点不是自己的  改之<br> layout_partial\footer.ejs    倒数第四行   修改了</li>
-<li>添加评论框  增加点实用功能 与网友互动  目前有两个评论系统靠谱 discus(访问很慢 pass掉) 多说 直接用多说<br> 4.1 layout_partial\article.ejs中将中部 dis 评论按钮代码替换为：<br> “`<br> &lt;% if (post.comments){ %&gt;<pre><code>&lt;a href=&quot;&lt;%- post.permalink %&gt;#ds-thread&quot; class=&quot;ds-thread-count article-comment-link&quot; data-thread-key=&quot;&lt;%- post.path%&gt;&quot;&gt;评论&lt;/a&gt;
-</code></pre> &lt;% } %&gt;<br> “<code>4.2 layout\_partial\article.ejs中底部 dis 评论框替换为：
- &quot;</code><br> &lt;% if (!index &amp;&amp; post.comments){ %&gt;<br> <section id="comments"><pre><code>&lt;div id=&quot;ds-thread&quot; class=&quot;ds-thread&quot; data-thread-key=&quot;&lt;%= post.path%&gt;&quot; data-title=&quot;&lt;%= post.title %&gt;&quot; data-url=&quot;&lt;%= post.permalink %&gt;&quot;&gt;&lt;/div&gt;
-</code></pre> </section><br> &lt;% } %&gt;<br> “<code>4.3 layout\_partial\after-footer.ejs中 discus 评论框替换为从多说获得的js代码：
- &quot;</code> <!-- 多说评论框 end -->
- <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
- <script type="text/javascript"><pre><code>var duoshuoQuery = {short_name:&quot;username&quot;};
-(function() {
-    var ds = document.createElement(&apos;script&apos;);
-    ds.type = &apos;text/javascript&apos;;ds.async = true;
-    ds.src = (document.location.protocol == &apos;https:&apos; ? &apos;https:&apos; : &apos;http:&apos;) + &apos;//static.duoshuo.com/embed.js&apos;;
-    ds.charset = &apos;UTF-8&apos;;
-    (document.getElementsByTagName(&apos;head&apos;)[0] 
-    || document.getElementsByTagName(&apos;body&apos;)[0]).appendChild(ds);
-})();
-</code></pre> </script> <!-- 多说公共JS代码 end -->
- “`</li>
+<li>安装RSS与SITEMAP 安装完Hexo之后发现受也有RSS(但是404)并且没有SITEMAP 安装之<br>npm install hexo-generator-feed –save  //rss<br>npm install hexo-generator-sitemap –save  //sitemap<br>安装完之后修改配置   themes\landscape\menu_config.yml:里添加网站地图:/sitemap.xml</li>
+<li>版权信息修改 页尾的有hexo连接  看着hexo连接  总感觉站点不是自己的  改之<br>layout_partial\footer.ejs    倒数第四行   修改了</li>
+<li><p>添加评论框  增加点实用功能 与网友互动  目前有两个评论系统靠谱 discus(访问很慢 pass掉) 多说 直接用多说</p>
+<ul>
+<li><p>layout_partial\article.ejs中将中部 dis 评论按钮代码替换为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;% if (post.comments)&#123; %&gt;</div><div class="line">    &lt;a href=&quot;&lt;%- post.permalink %&gt;#ds-thread&quot; class=&quot;ds-thread-count article-comment-link&quot; data-thread-key=&quot;&lt;%- post.path%&gt;&quot;&gt;评论&lt;/a&gt;</div><div class="line">&lt;% &#125; %&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>layout_partial\article.ejs中底部 dis 评论框替换为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;% if (!index &amp;&amp; post.comments)&#123; %&gt;</div><div class="line">&lt;section id=&quot;comments&quot;&gt;</div><div class="line">    &lt;div id=&quot;ds-thread&quot; class=&quot;ds-thread&quot; data-thread-key=&quot;&lt;%= post.path%&gt;&quot; data-title=&quot;&lt;%= post.title %&gt;&quot; data-url=&quot;&lt;%= post.permalink %&gt;&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;/section&gt;</div><div class="line">&lt;% &#125; %&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>layout_partial\after-footer.ejs中 discus 评论框替换为从多说获得的js代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 多说评论框 end --&gt;</div><div class="line">&lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&gt;</div><div class="line">&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">    var duoshuoQuery = &#123;short_name:&quot;username&quot;&#125;;</div><div class="line">    (function() &#123;</div><div class="line">        var ds = document.createElement(&apos;script&apos;);</div><div class="line">        ds.type = &apos;text/javascript&apos;;ds.async = true;</div><div class="line">        ds.src = (document.location.protocol == &apos;https:&apos; ? &apos;https:&apos; : &apos;http:&apos;) + &apos;//static.duoshuo.com/embed.js&apos;;</div><div class="line">        ds.charset = &apos;UTF-8&apos;;</div><div class="line">        (document.getElementsByTagName(&apos;head&apos;)[0] </div><div class="line">        || document.getElementsByTagName(&apos;body&apos;)[0]).appendChild(ds);</div><div class="line">    &#125;)();</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;!-- 多说公共JS代码 end --&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
 </ol>
 <p>好了   享受写博客的乐趣吧   还有很多等待发掘</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="jtl0813.github.io/2017/02/09/【Hexo-Github系列】在Github上搭建完Hexo需要优化的一些事情/" data-id="ciyy71yln0000aonyico2gouf" class="article-share-link">Share</a>
+      <a data-url="jtl0813.github.io/2017/02/09/【Hexo-Github系列】在Github上搭建完Hexo需要优化的一些事情/" data-id="ciyy78vj90000iony7hsc1tkq" class="article-share-link">Share</a>
       
       <a href="jtl0813.github.io/2017/02/09/【Hexo-Github系列】在Github上搭建完Hexo需要优化的一些事情/#ds-thread" class="ds-thread-count article-comment-link" data-thread-key="2017/02/09/【Hexo-Github系列】在Github上搭建完Hexo需要优化的一些事情/">评论</a>
       
@@ -169,7 +165,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="jtl0813.github.io/2017/02/09/【Hexo-Github系列】本地安装Hexo并发布在Github上/" data-id="ciyy71yls0001aony4tw0tb1x" class="article-share-link">Share</a>
+      <a data-url="jtl0813.github.io/2017/02/09/【Hexo-Github系列】本地安装Hexo并发布在Github上/" data-id="ciyy78vje0001ionyy4ky4cx2" class="article-share-link">Share</a>
       
       <a href="jtl0813.github.io/2017/02/09/【Hexo-Github系列】本地安装Hexo并发布在Github上/#ds-thread" class="ds-thread-count article-comment-link" data-thread-key="2017/02/09/【Hexo-Github系列】本地安装Hexo并发布在Github上/">评论</a>
       
@@ -208,7 +204,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="jtl0813.github.io/2017/02/09/整装待发/" data-id="ciyy71ylv0002aonyhvz9cp1m" class="article-share-link">Share</a>
+      <a data-url="jtl0813.github.io/2017/02/09/整装待发/" data-id="ciyy78vji0002ionyhciio37i" class="article-share-link">Share</a>
       
       <a href="jtl0813.github.io/2017/02/09/整装待发/#ds-thread" class="ds-thread-count article-comment-link" data-thread-key="2017/02/09/整装待发/">评论</a>
       
